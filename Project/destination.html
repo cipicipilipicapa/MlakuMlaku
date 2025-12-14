@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Destinasi • Mlaku Mlaku</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.vercel.com/css2?family=Geist:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="auth-body">
+    <div class="batik-overlay" aria-hidden="true"></div>
+    <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <main class="detail-layout">
+      <section class="detail-main">
+        <a href="./index.html#eksplor" class="detail-back">← Kembali ke daftar</a>
+        <p class="eyebrow">Detail destinasi</p>
+        <h1 id="detailTitle">Nama Destinasi</h1>
+        <p class="detail-subtitle" id="detailSubtitle">
+          Ringkasan singkat destinasi akan muncul di sini.
+        </p>
+
+        <div class="detail-media">
+          <div class="detail-image" id="detailImage"></div>
+          <div class="detail-meta" id="detailMeta"></div>
+        </div>
+
+        <div class="detail-tabs" role="tablist">
+          <button class="detail-tab active" data-panel="info">Info</button>
+          <button class="detail-tab" data-panel="rooms">Kamar & paket</button>
+          <button class="detail-tab" data-panel="reviews">Ulasan</button>
+          <button class="detail-tab" data-panel="chat">Chat pengelola</button>
+        </div>
+
+        <section class="detail-panels">
+          <article class="detail-panel" id="panel-info">
+            <h2>Tentang destinasi</h2>
+            <p id="detailDescription">
+              Informasi singkat mengenai sejarah, aktivitas, dan hal menarik
+              lain akan tampil di sini.
+            </p>
+            <ul class="detail-list" id="detailHighlights"></ul>
+          </article>
+
+          <article class="detail-panel hidden" id="panel-rooms">
+            <h2>Pilih kamar atau paket</h2>
+            <p class="detail-help">
+              Pilih salah satu kamar/paket di bawah ini. Ini hanya simulasi UI;
+              integrasi data asli bisa ditambahkan oleh backend.
+            </p>
+            <div class="room-grid" id="roomGrid"></div>
+          </article>
+
+          <article class="detail-panel hidden" id="panel-reviews">
+            <h2>Ulasan pengunjung</h2>
+            <ul class="detail-list" id="detailReviews"></ul>
+          </article>
+
+          <article class="detail-panel hidden" id="panel-chat">
+            <h2>Chat dengan pengelola</h2>
+            <div class="chat-box">
+              <div class="chat-log" id="chatLog"></div>
+              <form class="chat-input-row" id="chatForm">
+                <input
+                  type="text"
+                  id="chatInput"
+                  placeholder="Tulis pesan ke pengelola..."
+                  autocomplete="off"
+                />
+                <button class="btn primary small" type="submit">Kirim</button>
+              </form>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <aside class="detail-booking">
+        <div class="booking-card">
+          <p class="eyebrow">Pesan kunjungan</p>
+          <h2 id="bookingTitle">Atur kunjunganmu</h2>
+          <p class="detail-help">
+            Langkah sederhana untuk memesan: pilih tanggal, jumlah tamu, lalu
+            konfirmasi pembayaran.
+          </p>
+
+          <form class="booking-form" id="bookingForm">
+            <div class="form-group">
+              <label for="checkin">Tanggal kunjungan</label>
+              <input type="date" id="checkin" name="checkin" required />
+            </div>
+
+            <div class="form-group">
+              <label for="guests">Jumlah tamu</label>
+              <input
+                type="number"
+                id="guests"
+                name="guests"
+                min="1"
+                max="20"
+                value="2"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="selectedRoom">Kamar/paket yang dipilih</label>
+              <input
+                type="text"
+                id="selectedRoom"
+                name="selectedRoom"
+                placeholder="Belum dipilih"
+                readonly
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Sewa kendaraan (opsional)</label>
+              <div class="rental-options" id="rentalOptions">
+                <label>
+                  <input
+                    type="radio"
+                    name="rental"
+                    value=""
+                    checked
+                  />
+                  Tidak perlu kendaraan
+                </label>
+              </div>
+            </div>
+
+            <div class="booking-summary" id="bookingSummary">
+              Total estimasi: -
+            </div>
+
+            <button type="submit" class="btn primary full-width">
+              Lanjut ke pembayaran
+            </button>
+          </form>
+
+          <form class="payment-form hidden" id="paymentForm">
+            <div class="form-group">
+              <label for="payName">Nama pemesan</label>
+              <input
+                type="text"
+                id="payName"
+                name="payName"
+                placeholder="Nama lengkap"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="payEmail">Email untuk e-ticket</label>
+              <input
+                type="email"
+                id="payEmail"
+                name="payEmail"
+                placeholder="nama@contoh.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Metode pembayaran</label>
+              <div class="payment-options">
+                <label>
+                  <input
+                    type="radio"
+                    name="method"
+                    value="ewallet"
+                    checked
+                  />
+                  E-Wallet
+                </label>
+                <label>
+                  <input type="radio" name="method" value="transfer" />
+                  Transfer bank
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn primary full-width">
+              Konfirmasi & simpan
+            </button>
+          </form>
+
+          <div class="booking-success hidden" id="bookingSuccess">
+            <h3>Pesanan tersimpan secara lokal</h3>
+            <p>
+              Detail pemesanan ini masih bersifat simulasi dan disimpan di
+              browser. Integrasi ke sistem backend bisa dilakukan kemudian.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="./destination.js"></script>
+  </body>
+</html>
+
+
