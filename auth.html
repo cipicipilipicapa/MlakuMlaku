@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masuk • Mlaku Mlaku</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.vercel.com/css2?family=Geist:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="auth-body">
+    <div class="batik-overlay" aria-hidden="true"></div>
+    <a href="./index.html" class="back-to-home">
+      <span class="back-arrow">←</span>
+      <span class="back-text">Kembali ke halaman utama</span>
+    </a>
+    <main class="auth-layout">
+      <section class="auth-hero">
+        <a href="./index.html" class="auth-brand">
+          <img src="Mlaku Mlaku.png" alt="Mlaku Mlaku logo" />
+          <div>
+            <p class="eyebrow">Mlaku Mlaku</p>
+            <p class="tagline">Eksplor Jogja secara personal</p>
+          </div>
+        </a>
+        <h1>Masuk untuk menyimpan jejak perjalananmu.</h1>
+        <p>
+          Akun Mlaku Mlaku membantumu menyimpan wishlist, riwayat transaksi, dan
+          percakapan dengan pengelola wisata di satu tempat.
+        </p>
+      </section>
+
+      <section class="auth-card">
+        <div class="auth-toggle">
+          <button class="auth-tab active" data-mode="login">Masuk</button>
+          <button class="auth-tab" data-mode="register">Daftar</button>
+        </div>
+
+        <div class="role-toggle" role="radiogroup" aria-label="Tipe pengguna">
+          <button
+            class="role-pill active"
+            data-role="wisatawan"
+            aria-pressed="true"
+          >
+            Wisatawan
+          </button>
+          <button
+            class="role-pill"
+            data-role="pengelola"
+            aria-pressed="false"
+          >
+            Pengelola usaha wisata
+          </button>
+        </div>
+
+        <form class="auth-form" id="authForm">
+          <input type="hidden" name="mode" value="login" />
+          <input type="hidden" name="role" value="wisatawan" />
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              placeholder="nama@contoh.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Kata sandi</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              placeholder="Minimal 8 karakter"
+              required
+            />
+          </div>
+
+          <div class="form-group register-only hidden">
+            <label for="name">Nama lengkap</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              autocomplete="name"
+              placeholder="Nama sesuai KTP / identitas"
+            />
+          </div>
+
+          <div class="form-group register-only hidden pengelola-only">
+            <label for="business">Nama usaha wisata</label>
+            <input
+              type="text"
+              id="business"
+              name="business"
+              placeholder="Contoh: Jeep Merapi Pak Budi"
+            />
+          </div>
+
+          <button type="submit" class="btn primary full-width">
+            Lanjutkan
+          </button>
+        </form>
+
+        <p class="auth-hint" id="authHint">
+          Belum punya akun? Pilih tab <strong>Daftar</strong> di atas.
+        </p>
+
+        <p class="auth-meta">
+          *Untuk saat ini ini hanyalah simulasi UI. Integrasi login asli bisa
+          ditambahkan kemudian oleh tim backend.
+        </p>
+      </section>
+    </main>
+
+    <script src="./auth.js"></script>
+  </body>
+</html>
+
+
