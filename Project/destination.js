@@ -178,10 +178,11 @@ function renderDestinationDetail() {
     )
     .join("");
 
+  // Review akan dimuat dari database
   detailReviews.innerHTML = `
-    <li>"Pengalaman yang sangat menyenangkan, staf ramah dan pemandangan bagus." – Rina</li>
-    <li>"Mudah diakses dan cocok untuk keluarga dengan anak kecil." – Andi</li>
-    <li>"Reservasi lewat Mlaku Mlaku bikin lebih tenang karena jadwal jelas." – Luthfi</li>
+    <li style="color: var(--muted); font-style: italic;">
+      Belum ada ulasan dari pengguna yang sudah pernah menggunakan aplikasi. Review akan dimuat dari database.
+    </li>
   `;
 
   chatLog.innerHTML = `

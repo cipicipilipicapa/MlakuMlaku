@@ -102,23 +102,8 @@ const personas = {
   },
 };
 
-const reviews = [
-  {
-    name: "Alya • Solo Traveler",
-    quote:
-      "App ini bikin itinerary ke Jogja super smooth. Fitur chat pengelola membantu banget buat info akses difabel.",
-  },
-  {
-    name: "Tomo • Pengelola Jeep Merapi",
-    quote:
-      "Reservasi jadi rapi. Kami tahu jumlah rombongan yang datang dan bisa siapin armada tanpa over/under.",
-  },
-  {
-    name: "Mira • Admin Dinas Pariwisata",
-    quote:
-      "Data insight destinasi membantu kami menyusun program promosi yang lebih tepat sasaran.",
-  },
-];
+// Review akan dimuat dari database
+const reviews = [];
 
 const heroListElm = document.querySelector("#heroList");
 const chips = document.querySelectorAll(".chip");
@@ -136,7 +121,6 @@ const savedListElm = document.querySelector("#savedList");
 const plannerList = document.querySelector("#plannerList");
 const plannerSummary = document.querySelector("#plannerSummary");
 const toastContainer = document.querySelector(".toast-container");
-const themeToggle = document.querySelector("#themeToggle");
 const destinationModal = document.querySelector("#destinationModal");
 const modalContent = document.querySelector("#modalContent");
 const modalCloseBtn = document.querySelector("#modalCloseBtn");
@@ -327,6 +311,20 @@ function updatePlannerSummary() {
 }
 
 function renderReviews() {
+  if (!reviewTrack) return;
+  
+  // Jika tidak ada review dari database, tampilkan pesan kosong
+  if (reviews.length === 0) {
+    reviewTrack.innerHTML = `
+      <article class="review-card">
+        <p style="color: var(--muted); font-style: italic;">
+          Belum ada ulasan. Review akan dimuat dari database.
+        </p>
+      </article>
+    `;
+    return;
+  }
+  
   reviewTrack.innerHTML = reviews
     .map(
       (item) => `
@@ -432,20 +430,24 @@ personaTabs.forEach((tab) => {
 let reviewIndex = 0;
 
 function updateReviewTrack() {
+  if (!reviewTrack) return;
   const cards = reviewTrack.children.length;
+  if (cards === 0) return;
   reviewIndex = Math.min(Math.max(reviewIndex, 0), cards - 1);
   reviewTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
   reviewTrack.style.transition = "transform 0.4s ease";
 }
 
-navButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const direction = btn.classList.contains("next") ? 1 : -1;
-    const maxIndex = reviews.length - 1;
-    reviewIndex = Math.min(Math.max(reviewIndex + direction, 0), maxIndex);
-    updateReviewTrack();
+if (navButtons && navButtons.length > 0) {
+  navButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const direction = btn.classList.contains("next") ? 1 : -1;
+      const maxIndex = Math.max(reviews.length - 1, 0);
+      reviewIndex = Math.min(Math.max(reviewIndex + direction, 0), maxIndex);
+      updateReviewTrack();
+    });
   });
-});
+}
 
 function haversineDistance(lat1, lon1, lat2, lon2) {
   const toRad = (deg) => (deg * Math.PI) / 180;
@@ -557,25 +559,6 @@ window.initMap = function initMap() {
   });
 };
 
-if (themeToggle) {
-  const savedTheme = localStorage.getItem("mlaku_theme");
-  if (savedTheme === "senja") {
-    document.documentElement.setAttribute("data-theme", "senja");
-  }
-  themeToggle.addEventListener("click", () => {
-    const isSenja =
-      document.documentElement.getAttribute("data-theme") === "senja";
-    if (isSenja) {
-      document.documentElement.removeAttribute("data-theme");
-      localStorage.setItem("mlaku_theme", "default");
-      themeToggle.textContent = "Senja";
-    } else {
-      document.documentElement.setAttribute("data-theme", "senja");
-      localStorage.setItem("mlaku_theme", "senja");
-      themeToggle.textContent = "Pagi";
-    }
-  });
-}
 
 const fadeSections = document.querySelectorAll(".fade-section");
 if (fadeSections.length && "IntersectionObserver" in window) {

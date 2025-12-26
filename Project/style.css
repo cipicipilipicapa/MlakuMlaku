@@ -12,16 +12,6 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-:root[data-theme="senja"] {
-  --bg: #f6eee7;
-  --card: rgba(255, 252, 247, 0.96);
-  --primary: #6b3016;
-  --primary-dark: #4c1f0c;
-  --text: #21130d;
-  --muted: rgba(33, 19, 13, 0.7);
-  --stroke: rgba(107, 48, 22, 0.22);
-  --accent: #e1b15a;
-}
 
 * {
   box-sizing: border-box;
@@ -507,13 +497,7 @@ body {
 .batik-overlay {
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(
-      circle at 25% 40%,
-      rgba(217, 164, 65, 0.08),
-      transparent 55%
-    ),
-    linear-gradient(135deg, rgba(124, 62, 34, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-  background-size: 400px 400px, cover;
+  background: linear-gradient(135deg, rgba(124, 62, 34, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
   z-index: -1;
 }
 
@@ -588,21 +572,10 @@ body {
 .cta-group {
   display: flex;
   gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.theme-toggle {
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: transparent;
-  padding: 0.45rem 0.9rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-  color: var(--muted);
-}
-
-.theme-toggle:hover {
-  background: rgba(124, 62, 34, 0.06);
-}
 
 .btn {
   border: none;
@@ -614,6 +587,14 @@ body {
   border: 1px solid var(--stroke);
   color: var(--text);
   transition: transform 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .btn.primary {
@@ -738,12 +719,7 @@ main {
   flex-direction: column;
   gap: 1.5rem;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
-  background-image: radial-gradient(
-    circle at top left,
-    rgba(217, 164, 65, 0.12),
-    transparent 55%
-  );
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, rgba(124, 62, 34, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
   animation: cardFloat 14s ease-in-out infinite alternate;
 }
 
@@ -821,11 +797,7 @@ main {
   border: 1px solid var(--stroke);
   border-radius: 1.25rem;
   padding: 1.25rem;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(255, 255, 255, 0.7)
-  );
+  background: linear-gradient(135deg, rgba(124, 62, 34, 0.04) 0%, rgba(255, 255, 255, 0.95) 100%);
 }
 
 .chat-bubble {
@@ -858,12 +830,7 @@ main {
   padding: 1.75rem;
   border-radius: 1.25rem;
   background: #fff;
-  background-image: radial-gradient(
-    circle at top right,
-    rgba(217, 164, 65, 0.08),
-    transparent 60%
-  );
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, rgba(124, 62, 34, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -1118,12 +1085,7 @@ main {
   border: 1px solid var(--stroke);
   padding: 1.75rem 1.75rem 1.5rem;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
-  background-image: radial-gradient(
-    circle at top right,
-    rgba(217, 164, 65, 0.1),
-    transparent 55%
-  );
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, rgba(124, 62, 34, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .destination-modal__close {
@@ -1517,6 +1479,8 @@ main {
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .panel-header h2 {
@@ -1958,7 +1922,7 @@ main {
 
 /* Total Income Card */
 .total-income-card {
-  background: linear-gradient(135deg, rgba(124, 62, 34, 0.08), rgba(217, 164, 65, 0.08));
+  background: linear-gradient(135deg, rgba(124, 62, 34, 0.08) 0%, rgba(124, 62, 34, 0.04) 100%);
   border: 1px solid var(--stroke);
   border-radius: 1.5rem;
   padding: 2rem;
@@ -2332,7 +2296,7 @@ main {
 .destination-image-placeholder {
   width: 100%;
   height: 180px;
-  background: linear-gradient(135deg, rgba(124, 62, 34, 0.1), rgba(217, 164, 65, 0.1));
+  background: linear-gradient(135deg, rgba(124, 62, 34, 0.1) 0%, rgba(124, 62, 34, 0.05) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2659,41 +2623,543 @@ main {
   resize: vertical;
 }
 
-@media (max-width: 760px) {
+/* Responsive Design untuk Handphone */
+@media (max-width: 768px) {
+  /* Header */
   .site-header {
     flex-wrap: wrap;
+    padding: 1rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    gap: 0.65rem;
+  }
+
+  .brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand .eyebrow {
+    font-size: 0.8rem;
+  }
+
+  .brand .tagline {
+    font-size: 0.75rem;
   }
 
   .main-nav {
     flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    order: 3;
+    width: 100%;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--stroke);
+  }
+
+  .main-nav a {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    width: 100%;
+    order: 2;
+    justify-content: stretch;
+  }
+
+  .btn {
+    padding: 0.65rem 1.15rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+  }
+
+  .btn.ghost {
+    flex: 0 1 auto;
+    min-width: fit-content;
+  }
+
+  .btn.primary {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Hero Section */
+  main {
+    padding: 1.5rem 1rem 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content .eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(1.75rem, 6vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 
   .hero-actions {
     flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .hero-stats {
+    gap: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0;
+  }
+
+  .hero-stats li {
+    padding-left: 0 !important;
+    border-left: none !important;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    border-top: 1px solid var(--stroke);
+    width: 100%;
+  }
+
+  .hero-stats li:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .hero-stats span {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-stats li {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  /* Section Head */
+  .section-head {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-head .eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.5rem, 5vw, 1.9rem);
+    line-height: 1.3;
+  }
+
+  /* Explore Section */
+  .explore-controls {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-field input,
+  .explore-filters select {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 999px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .destination-card {
+    border-radius: 1rem;
+  }
+
+  .destination-card img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .destination-card .content {
+    padding: 1.15rem;
+    gap: 0.65rem;
+  }
+
+  .destination-card h3 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin: 0.2rem 0;
+  }
+
+  .destination-card p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .destination-card .meta {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .destination-actions {
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.85rem;
+  }
+
+  .destination-actions > div {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .destination-actions .btn {
+    flex: 1;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .icon-btn {
+    padding: 0.25rem;
+  }
+
+  /* Map Section */
+  .map-section {
+    padding: 1.5rem;
+  }
+
+  .map-layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #gmaps {
+    min-height: 280px;
+    border-radius: 1.25rem;
+  }
+
+  .map-side {
+    padding: 1.15rem;
+  }
+
+  .map-copy {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .map-legend {
+    gap: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  .planner {
+    padding: 1.25rem 1.15rem;
+    margin-top: 1.25rem;
+  }
+
+  .planner-head h3 {
+    font-size: 1.15rem;
+    line-height: 1.3;
   }
 
   .planner-body {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
-  .explore-controls {
+  .planner-list {
+    gap: 0.5rem;
+  }
+
+  .planner-list label {
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+  }
+
+  .planner-summary {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* Reviews Section */
+  .reviews {
+    padding: 1.5rem;
+  }
+
+  .review-carousel {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.65rem;
     align-items: stretch;
-    flex-direction: column;
   }
 
+  .nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .review-track {
+    grid-auto-columns: 100%;
+    margin-inline: 0.35rem;
+    gap: 1rem;
+  }
+
+  .review-card {
+    padding: 1.35rem;
+    gap: 0.85rem;
+  }
+
+  .review-card p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .review-card strong {
+    font-size: 0.8rem;
+    margin-top: 0.65rem;
+  }
+
+  /* Personas Section */
+  .personas {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .persona-tabs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tab {
+    padding: 0.5rem 1.15rem;
+    font-size: 0.85rem;
+  }
+
+  .persona-panel {
+    padding: 1.5rem;
+  }
+
+  .persona-panel h3 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .persona-panel ul {
+    gap: 0.65rem;
+  }
+
+  .persona-panel li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Features Section */
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .feature-grid article {
+    padding: 1.5rem;
+    border-radius: 1.15rem;
+  }
+
+  .feature-grid h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .feature-grid p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 2rem 1rem 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .site-footer .eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .site-footer p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .site-footer ul {
+    font-size: 0.875rem;
+    gap: 0.4rem;
+  }
+
+  .socials {
+    gap: 0.65rem;
+  }
+
+  .socials a {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  /* Auth Layout */
   .auth-layout {
     grid-template-columns: minmax(0, 1fr);
-    padding-block: 2.5rem;
+    padding: 1.5rem 1rem;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .auth-hero {
+    text-align: left;
+  }
+
+  .auth-brand {
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .auth-hero h1 {
+    font-size: clamp(1.75rem, 6vw, 2rem);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+
+  .auth-hero p {
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   .auth-card {
     margin-inline: auto;
+    max-width: 100%;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
   }
 
+  .auth-toggle {
+    margin-bottom: 1.25rem;
+  }
+
+  .auth-tab {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  .role-toggle {
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .role-pill {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .auth-form {
+    gap: 1.15rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input {
+    padding: 0.7rem 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  .back-to-home {
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .back-text {
+    display: none;
+  }
+
+  .back-arrow {
+    font-size: 1.3rem;
+  }
+
+  /* Detail Layout */
   .detail-layout {
     grid-template-columns: minmax(0, 1fr);
-    padding-block: 2.5rem;
+    padding: 1.5rem 1rem;
+    gap: 1.75rem;
+  }
+
+  .detail-back {
+    font-size: 0.8rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .detail-main .eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-main h1 {
+    font-size: clamp(1.75rem, 6vw, 2rem);
+    line-height: 1.25;
+    margin-bottom: 0.65rem;
+  }
+
+  .detail-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
   }
 
   .detail-booking {
@@ -2703,62 +3169,825 @@ main {
 
   .detail-media {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 
-  .back-to-home {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.55rem 1rem;
+  .detail-image {
+    min-height: 240px;
+    border-radius: 1.25rem;
+  }
+
+  .detail-meta {
+    padding: 1.15rem;
+    border-radius: 1.25rem;
+  }
+
+  .detail-meta p {
+    font-size: 0.875rem;
+  }
+
+  .detail-tabs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .detail-tab {
+    padding: 0.45rem 0.9rem;
     font-size: 0.85rem;
   }
 
-  .back-text {
-    display: none;
+  .detail-panels {
+    padding: 1.25rem 1.35rem;
+    border-radius: 1.5rem;
   }
 
-  .back-arrow {
-    font-size: 1.4rem;
+  .detail-panels h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.65rem;
   }
 
+  .detail-help {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .detail-list {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .room-grid {
+    gap: 0.85rem;
+  }
+
+  .room-card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .room-card__body strong {
+    font-size: 0.95rem;
+  }
+
+  .room-card__body span {
+    font-size: 0.85rem;
+  }
+
+  .chat-box {
+    padding: 1rem;
+    border-radius: 1.15rem;
+  }
+
+  .chat-log {
+    max-height: 200px;
+    gap: 0.65rem;
+  }
+
+  .chat-bubble {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.875rem;
+  }
+
+  .chat-input-row input {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .booking-card {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .booking-card .eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .booking-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .booking-form,
+  .payment-form {
+    gap: 1rem;
+    margin-top: 1.15rem;
+  }
+
+  .booking-summary {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Dashboard */
   .dashboard-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    padding: 1rem 1rem 1.25rem;
+  }
+
+  .dashboard-brand {
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .dashboard-brand img {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  .dashboard-brand > div {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .dashboard-brand .dashboard-title {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-bottom: 0.15rem;
+  }
+
+  .dashboard-brand .dashboard-subtitle {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .dashboard-user {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .user-name {
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .btn-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .btn.ghost.small {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .dashboard-main {
+    padding: 1rem 1rem 1.5rem;
   }
 
   .dashboard-tabs {
-    gap: 0.25rem;
+    gap: 0.4rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    scrollbar-width: none;
+  }
+
+  .dashboard-tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .dashboard-tab {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .panel-header h2 {
+    font-size: clamp(1.4rem, 5vw, 1.75rem);
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  .panel-subtitle {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .panel-header .btn.primary {
+    width: 100%;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.875rem;
   }
 
   .stats-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem;
+  }
+
+  .stat-icon {
+    font-size: 1.75rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
   }
 
   .dashboard-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .dashboard-card {
+    padding: 1.25rem;
+  }
+
+  .dashboard-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .income-category-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .income-category-card {
+    padding: 1.5rem;
+  }
+
+  .income-category-header h3 {
+    font-size: 1.15rem;
+  }
+
+  .income-amount {
+    font-size: 1.75rem;
+  }
+
+  .category-activity-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .chat-layout-dashboard {
     grid-template-columns: 1fr;
     height: auto;
+    border-radius: 1.15rem;
   }
 
   .chat-list-sidebar {
     border-right: none;
     border-bottom: 1px solid var(--stroke);
-    max-height: 200px;
+    max-height: 180px;
+  }
+
+  .chat-item {
+    padding: 0.85rem;
+  }
+
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .chat-info strong {
+    font-size: 0.85rem;
+  }
+
+  .chat-info p {
+    font-size: 0.8rem;
+  }
+
+  .chat-header-main {
+    padding: 0.85rem 1.15rem;
+  }
+
+  .chat-messages {
+    padding: 1.15rem;
+  }
+
+  .message {
+    max-width: 85%;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .chat-input-area {
+    padding: 0.85rem 1.15rem;
+  }
+
+  .chat-input-area input {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
   }
 
   .settings-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .settings-card {
+    padding: 1.25rem;
+  }
+
+  .settings-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Filter Bar */
+  .filter-bar {
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.825rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: fit-content;
+  }
+
+  /* Table Container */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.75rem;
+    margin: 0 -0.25rem;
+    border-radius: 1rem;
+  }
+
+  .data-table {
+    min-width: 700px;
+    width: 100%;
+  }
+
+  .data-table thead {
+    background: rgba(124, 62, 34, 0.05);
+  }
+
+  .data-table th {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: left;
+    border-bottom: 2px solid var(--stroke);
+  }
+
+  .data-table td {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .badge {
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* Service Detail Tabs */
+  .service-detail-tabs {
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.75rem;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .service-detail-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-detail-tab {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.825rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .service-detail-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .service-detail-title h2 {
+    font-size: clamp(1.4rem, 5vw, 1.75rem);
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  .btn-back {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-panel-header .btn.primary {
+    width: 100%;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .service-panel-title h2 {
+    font-size: clamp(1.4rem, 5vw, 1.75rem);
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  .room-grid-dashboard,
+  .vehicle-grid,
+  .destination-grid-dashboard {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .room-card-dashboard,
+  .destination-card-dashboard {
+    border-radius: 1.15rem;
+  }
+
+  .room-image-placeholder,
+  .destination-image-placeholder {
+    height: 160px;
+    font-size: 2.5rem;
+  }
+
+  .room-details,
+  .destination-content {
+    padding: 1.15rem;
+  }
+
+  .room-details h3,
+  .vehicle-card h3,
+  .destination-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .room-price {
+    font-size: 1rem;
+  }
+
+  .vehicle-card {
+    padding: 1.25rem;
+  }
+
+  .vehicle-icon {
+    font-size: 2.5rem;
+  }
+
+  .review-item-dashboard {
+    padding: 1.25rem;
+  }
+
+  .review-header {
+    margin-bottom: 0.85rem;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Modal */
+  .destination-modal__body {
+    margin-inline: 0.75rem;
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .destination-modal__content h3 {
+    font-size: 1.4rem;
+  }
+
+  .destination-modal__meta {
+    font-size: 0.85rem;
+  }
+
+  .settings-modal-content {
+    margin-inline: 0.75rem;
+    max-height: 90vh;
+    border-radius: 1.5rem;
+  }
+
+  .settings-modal-header {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .settings-modal-header h2 {
+    font-size: clamp(1.5rem, 5vw, 1.9rem);
+  }
+
+  .settings-modal-body {
+    padding: 1.25rem;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  /* Header */
+  .site-header {
+    padding: 0.75rem 0.85rem;
+    gap: 0.65rem;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand .eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .brand .tagline {
+    font-size: 0.7rem;
+  }
+
+  .main-nav {
+    gap: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .main-nav a {
+    padding: 0.35rem 0.65rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.825rem;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cta-group {
+    gap: 0.5rem;
+  }
+
+  .btn.ghost {
+    flex: 0 1 auto;
+    min-width: fit-content;
+  }
+
+  .btn.primary {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Main Content */
+  main {
+    padding: 1.25rem 0.85rem 2rem;
+    gap: 2rem;
+  }
+
+  .hero {
+    padding: 1.25rem 0;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .lead {
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-actions .btn {
+    padding: 0.7rem 1.25rem;
+  }
+
+  .hero-stats span {
+    font-size: 1.5rem;
+  }
+
+  /* Sections */
+  .section-head {
+    margin-bottom: 1.25rem;
+  }
+
+  .section-head h2 {
+    font-size: 1.4rem;
+  }
+
+  .explore-controls {
+    gap: 0.65rem;
+  }
+
+  .card-grid {
+    gap: 1rem;
+  }
+
+  .destination-card img {
+    height: 200px;
+  }
+
+  .destination-card .content {
+    padding: 1rem;
+  }
+
+  /* Auth & Booking */
+  .auth-layout {
+    padding: 1.25rem 0.85rem;
+    gap: 1.75rem;
+  }
+
+  .auth-card {
+    padding: 1.25rem;
+  }
+
+  .auth-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .detail-layout {
+    padding: 1.25rem 0.85rem;
+    gap: 1.5rem;
+  }
+
+  .detail-panels {
+    padding: 1rem 1.15rem;
+  }
+
+  .booking-card {
+    padding: 1.25rem;
+  }
+
+  /* Reviews & Personas */
+  .reviews {
+    padding: 1.25rem;
+  }
+
+  .review-card {
+    padding: 1.15rem;
+  }
+
+  .personas {
+    padding: 1.25rem;
+  }
+
+  .persona-panel {
+    padding: 1.25rem;
+  }
+
+  .persona-panel h3 {
+    font-size: 1.15rem;
+  }
+
+  /* Features */
+  .feature-grid article {
+    padding: 1.25rem;
+  }
+
+  .feature-grid h3 {
+    font-size: 1.05rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 1.75rem 0.85rem 2rem;
+    gap: 1.75rem;
+  }
+
+  /* Dashboard */
+  .dashboard-header {
+    padding: 0.85rem 0.75rem 1rem;
+  }
+
+  .dashboard-brand .dashboard-title {
+    font-size: 0.85rem;
+  }
+
+  .dashboard-brand .dashboard-subtitle {
+    font-size: 0.7rem;
+  }
+
+  .user-name {
+    font-size: 0.8rem;
+  }
+
+  .dashboard-main {
+    padding: 0.85rem 0.75rem 1.25rem;
+  }
+
+  .dashboard-tabs {
+    gap: 0.3rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .dashboard-tab {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.825rem;
+  }
+
+  .panel-header {
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .panel-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .panel-subtitle {
+    font-size: 0.825rem;
+  }
+
+  .filter-bar {
+    gap: 0.45rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
   }
 
   .table-container {
-    overflow-x: scroll;
+    padding: 0.65rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.775rem;
+  }
+
+  .stat-card {
+    padding: 1.15rem;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+
+  .dashboard-card {
+    padding: 1.15rem;
+  }
+
+  /* Modal */
+  .destination-modal__body {
+    margin-inline: 0.5rem;
+    padding: 1.15rem;
+  }
+
+  .settings-modal-content {
+    margin-inline: 0.5rem;
   }
 }

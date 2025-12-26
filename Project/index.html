@@ -35,9 +35,6 @@
         <a href="./dashboard-pengelola.html" class="dashboard-link">Dashboard Pengelola</a>
       </nav>
       <div class="cta-group">
-        <button class="theme-toggle" type="button" id="themeToggle">
-          Senja
-        </button>
         <a class="btn ghost" href="./auth.html">Masuk</a>
         <a class="btn primary" href="./auth.html">Mulai Jelajah</a>
       </div>
@@ -140,11 +137,13 @@
       <section id="ulasan" class="reviews fade-section">
         <div class="section-head">
           <p class="eyebrow">Suara pengguna</p>
-          <h2>Ulasan nyata setelah kunjungan.</h2>
+          <h2>Ulasan dari pengguna yang sudah pernah menggunakan aplikasi.</h2>
         </div>
         <div class="review-carousel">
           <button class="nav prev" aria-label="Sebelumnya">‹</button>
-          <div class="review-track" id="reviewTrack"></div>
+          <div class="review-track" id="reviewTrack">
+            <!-- Review akan dimuat dari database -->
+          </div>
           <button class="nav next" aria-label="Berikutnya">›</button>
         </div>
       </section>
